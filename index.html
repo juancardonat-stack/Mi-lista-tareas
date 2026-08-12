@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Lista de Tareas</title>
+    <!-- Fuente moderna desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>MIS TAREAS DIARIAS</h1>
+        
+        <div class="input-container">
+            <input type="text" id="taskInput" placeholder="Añade una nueva tarea...">
+            <button id="addBtn">Agregar</button>
+        </div>
+
+        <!-- CARACTERÍSTICA EXTRA: Filtros de Tareas -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">Todas</button>
+            <button class="filter-btn" data-filter="pending">Pendientes</button>
+            <button class="filter-btn" data-filter="completed">Completadas</button>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar">0%</div>
+        </div>
+
+        <ul id="taskList"></ul>
+
+        <div class="footer-info">
+            <span id="statsText">0 de 0 tareas completadas</span>
+            <button id="clearBtn">Limpiar Todo</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
