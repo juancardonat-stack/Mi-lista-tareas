@@ -1,0 +1,293 @@
+/* ==========================================
+   VARIABLES Y ESTILOS GENERALES
+   ========================================== */
+:root {
+    --primary-color: #06b6d4; /* Azul Neón / Cian moderno */
+    --primary-hover: #0891b2;
+    --accent-color: #f59e0b;
+    --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #311042 100%);
+    --card-bg: rgba(255, 255, 255, 0.96);
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --radius-lg: 24px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --shadow-soft: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 15px;
+    color: var(--text-main);
+}
+
+/* ==========================================
+   CONTENEDOR PRINCIPAL
+   ========================================== */
+.container {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 36px 26px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* TÍTULO RENOVADO: Nueva fuente 'Space Grotesk', color degradado cian/violeta y sin emoji */
+h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.85rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #06b6d4 0%, #6366f1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+}
+
+/* ==========================================
+   ENTRADA DE DATOS
+   ========================================== */
+.input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 14px 16px;
+    border: 2px solid var(--border-color);
+    background-color: #f8fafc;
+    border-radius: var(--radius-md);
+    outline: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+    transition: all 0.25s ease;
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary-color);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.15);
+}
+
+button#addBtn {
+    padding: 14px 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35);
+    transition: all 0.2s ease;
+}
+
+button#addBtn:active {
+    transform: scale(0.95);
+}
+
+/* ==========================================
+   CARACTERÍSTICA EXTRA: Botones de Filtro
+   ========================================== */
+.filter-container {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 18px;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: var(--radius-md);
+}
+
+.filter-btn {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn.active {
+    background: #ffffff;
+    color: var(--primary-hover);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* ==========================================
+   BARRA DE PROGRESO DINÁMICA
+   ========================================== */
+.progress-container {
+    width: 100%;
+    background-color: #e2e8f0;
+    border-radius: 50px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    height: 22px;
+    padding: 2px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #10b981, #34d399);
+    border-radius: 50px;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+}
+
+/* ==========================================
+   LISTA DE TAREAS Y TARJETAS
+   ========================================== */
+ul {
+    list-style: none;
+    max-height: 280px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding-right: 4px;
+}
+
+ul::-webkit-scrollbar {
+    width: 5px;
+}
+ul::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background-color: #ffffff;
+    border-radius: var(--radius-md);
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    transition: all 0.25s ease;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+li input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.task-text {
+    flex: 1;
+    cursor: pointer;
+    margin-left: 12px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+li.completed {
+    background-color: #f8fafc;
+    border-color: transparent;
+}
+
+li.completed .task-text {
+    text-decoration: line-through;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.delete-btn {
+    background: #fee2e2;
+    border: none;
+    color: var(--danger-color);
+    font-weight: 800;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* ==========================================
+   PIE DE PÁGINA Y ESTADÍSTICAS AUMENTADAS
+   ========================================== */
+.footer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 18px;
+}
+
+/* AUMENTO DE TAMAÑO DE LA FUENTE QUE INDICA TAREAS COMPLETADAS */
+#statsText {
+    font-size: 1.05rem; /* Tamaño más grande y legible */
+    font-weight: 800;    /* Negrita destacada */
+    color: #334155;      /* Color oscuro de alto contraste */
+}
+
+#clearBtn {
+    background: #f1f5f9;
+    border: none;
+    color: var(--danger-color);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+}
+
+#clearBtn:hover {
+    background: #fee2e2;
+}
